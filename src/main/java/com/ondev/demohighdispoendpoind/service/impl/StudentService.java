@@ -34,7 +34,7 @@ public class StudentService implements IStudentService {
                     log.info("EtudiantDto: {}", etudiantDto);
                     return etudiantDto.toBuilder().age(15).build();
                 })
-                .retryWhen(Retry.backoff(3, Duration.ofSeconds(1)) // Réessayer 3 fois avec un délai exponentiel
+                .retryWhen(Retry.backoff(4, Duration.ofSeconds(1)) // Réessayer 3 fois avec un délai exponentiel
                         .filter(throwable -> {
                             // Réessayer uniquement en cas d'erreur 429
                             if (throwable instanceof WebClientResponseException) {
